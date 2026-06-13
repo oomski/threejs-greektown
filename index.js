@@ -8,8 +8,10 @@ const w = window.innerWidth;
 const h = window.innerHeight;
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
-camera.position.z = 1.5;
+const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 1000);
+
+camera.position.y = -3;
+camera.position.z = 1;
 // make canvas transparent
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -70,10 +72,13 @@ pivot.add(greektown);
 // start rotated 270 degrees around Y
 pivot.rotation.y = 3 * Math.PI / 2; // 270deg
 
+pivot.rotation.x = 0.3 * Math.PI / 2; // 270deg
+
 // bounce setup: 180° total (min = 270° - 180° = 90°, max = 270°)
 const clock = new THREE.Clock();
 const rotationSpeed = 0.3; // radians per second (~0.005 per frame at 60fps)
 const startAngle = pivot.rotation.y; // 270deg
+
 const fullRange = Math.PI; // 180° in radians
 const minAngle = startAngle - fullRange; // 90deg
 const maxAngle = startAngle; // 270deg
